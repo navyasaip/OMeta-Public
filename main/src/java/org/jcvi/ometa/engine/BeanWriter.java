@@ -268,7 +268,7 @@ public class BeanWriter {
      * @throws Exception thrown by called methods.
      */
     private MultiLoadParameter createMultiLoadParameterWithCollector(FileCollector collector) throws Exception {
-        List<File> files = null;
+        List<File> files;
 
         MultiLoadParameter parameterObject = new MultiLoadParameter();
         files = collector.getLookupValueFiles();
@@ -444,7 +444,7 @@ public class BeanWriter {
      * @throws Exception thrown if exception during get phase.
      */
     public <B extends ModelBean> List<B> getGenericModelBeans(File file, Class<B> beanClass) throws Exception {
-        List<B> beans = null;
+        List<B> beans;
 
         try {
             beans = new ArrayList<>();

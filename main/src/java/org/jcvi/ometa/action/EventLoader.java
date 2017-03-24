@@ -288,7 +288,7 @@ public class EventLoader extends ActionSupport implements Preparable {
                                             String[] paths = attributeMap.get(attributeName).split(",");
 
                                             if(!paths[0].equals("")) {
-                                                File file = null;
+                                                File file;
                                                 byte[] bytes;
                                                 FileInputStream fis;
 
@@ -383,7 +383,7 @@ public class EventLoader extends ActionSupport implements Preparable {
             error.append((this.sampleName == null ? "" : this.sampleName) + ":");
             error.append(this.eventName + ":");
 
-            String errorMsg = "";
+            String errorMsg;
             if (ex.getClass() == ForbiddenResourceException.class) {
                 errorMsg = Constants.DENIED_USER_EDIT_MESSAGE;
                 rtnVal = Constants.FORBIDDEN_ACTION_RESPONSE;

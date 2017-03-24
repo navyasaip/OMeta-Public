@@ -146,7 +146,7 @@ public class EventDAO extends HibernateDAO {
             String fromd, String tod, List<String> columnName, List<String> columnSearchArguments, Session session) throws DAOException {
         List<Event> eventList = new ArrayList<>();
         try {
-            List results = null;
+            List results;
 
             StringBuilder sql = new StringBuilder(" select E.*, S.sample_name sample, CONCAT(A.actor_last_name,',',A.actor_first_name) user, LV.lkuvlu_name eventType  " +
                     " from event E " +
@@ -360,7 +360,7 @@ public class EventDAO extends HibernateDAO {
     }
 
     public Event getLatestEventForSample(Long projectId, Long sampleId, Long eventTypeId, Session session) throws DAOException {
-        Event latestEvent = null;
+        Event latestEvent;
 
         try {
             String where = "where eventType = :eventTypeId and projectId = :projectId";

@@ -117,7 +117,7 @@ public class SampleAttributeDAO extends HibernateDAO {
     public List<SampleAttribute> getSampleAttributesFromProject( Long projectId, Long attributeLookupValueId, Session session )
             throws DAOException {
 
-        List<SampleAttribute> results = null;
+        List<SampleAttribute> results;
         try {
             Criteria crit = session.createCriteria( SampleAttribute.class );
             crit.add( Restrictions.eq( "projectId", projectId ) );

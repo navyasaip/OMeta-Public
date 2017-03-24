@@ -71,7 +71,7 @@ public class WriteableAllOrNothingAuthInterceptor {
     public Object intercept( InvocationContext invocationContext ) throws Exception {
         lazyInit();
 
-        Object rtnVal = null;
+        Object rtnVal;
 
         String user = interceptorHelper.getAndTestLoggedInUser(context.getCallerPrincipal());
         List<? extends Object> approved = null;

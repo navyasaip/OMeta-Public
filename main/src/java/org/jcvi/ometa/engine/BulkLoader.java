@@ -51,7 +51,7 @@ public class BulkLoader {
 
     private void processBulkLoads() throws Exception {
         LoadingEngine loadingEngine = new LoadingEngine();
-        int iterationResult = 0;
+        int iterationResult;
 
         try {
             LoadingEngineUsage usage = new LoadingEngineUsage();

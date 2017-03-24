@@ -78,7 +78,7 @@ public class EventLoadHelper {
             }
         }*/
 
-        Project loadingProject = null;
+        Project loadingProject;
         Sample loadingSample = null;
 
         int gridRowIndex = 0;

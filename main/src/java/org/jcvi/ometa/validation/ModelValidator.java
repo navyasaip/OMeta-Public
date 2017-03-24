@@ -310,7 +310,7 @@ public class ModelValidator {
     }
 
     public static Object getModelValue(LookupValue lookupValue, AttributeModelBean model) {
-        Object rtnValue = null;
+        Object rtnValue;
         String dataType = lookupValue.getDataType();
         if(dataType.equals(DATE_DATA_TYPE)) {
             rtnValue = model.getAttributeDateValue();

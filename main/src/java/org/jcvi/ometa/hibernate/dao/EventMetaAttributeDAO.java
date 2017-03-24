@@ -150,7 +150,7 @@ public class EventMetaAttributeDAO extends HibernateDAO {
 
     /** get all unique meta-attributes */
     public List<EventMetaAttribute> readAllUnique( Session session ) throws DAOException {
-        List<EventMetaAttribute> attributeList = new ArrayList<>();
+        List<EventMetaAttribute> attributeList;
         try {
             String sql = " select EMA.*,LV.lkuvlu_name " +
                     " from event_meta_attribute EMA, " +

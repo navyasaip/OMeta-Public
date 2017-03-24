@@ -121,7 +121,7 @@ public class ProjectSampleEventPresentationStateless implements ProjectSampleEve
     @ExcludeClassInterceptors
     @WebMethod
     public List<Actor> getAllActor() throws Exception {
-        List<Actor> actors = null;
+        List<Actor> actors;
         try {
             ActorDAO actorDao = daoFactory.getActorDAO();
             Session session = this.startTransactedSession();
@@ -156,7 +156,7 @@ public class ProjectSampleEventPresentationStateless implements ProjectSampleEve
 
     @ExcludeClassInterceptors
     public String isUserAdmin(String loginName) throws Exception {
-        boolean isAdmin = false;
+        boolean isAdmin;
         try {
             ActorDAO actorDao = daoFactory.getActorDAO();
             Session session = this.startTransactedSession();
@@ -294,7 +294,7 @@ public class ProjectSampleEventPresentationStateless implements ProjectSampleEve
     public List<ProjectMetaAttribute> getUniqueProjectMetaAttributes() throws Exception {
         Session session = startTransactedSession();
 
-        List<ProjectMetaAttribute> pmaBeans = Collections.emptyList();
+        List<ProjectMetaAttribute> pmaBeans;
         try {
             ProjectMetaAttributeDAO pmaDao = daoFactory.getProjectMetaAttributeDAO();
             pmaBeans = pmaDao.readAllUnique( session );
@@ -319,7 +319,7 @@ public class ProjectSampleEventPresentationStateless implements ProjectSampleEve
     public List<ProjectAttribute> getProjectAttributes(Long projectId) throws Exception {
         Session session = startTransactedSession();
 
-        List<ProjectAttribute> paBeans = Collections.emptyList();
+        List<ProjectAttribute> paBeans;
         try {
             ProjectAttributeDAO paDao = daoFactory.getProjectAttributeDAO();
             paBeans = paDao.readAll(projectId, session);
@@ -338,7 +338,7 @@ public class ProjectSampleEventPresentationStateless implements ProjectSampleEve
     public List<ProjectAttribute> getProjectAttributes( @JCVI_Project List<Long> projectIds ) throws Exception {
         Session session = startTransactedSession();
 
-        List<ProjectAttribute> paBeans = Collections.emptyList();
+        List<ProjectAttribute> paBeans;
         try {
             ProjectAttributeDAO paDao = daoFactory.getProjectAttributeDAO();
             paBeans = paDao.readAll(projectIds, session);
@@ -437,7 +437,7 @@ public class ProjectSampleEventPresentationStateless implements ProjectSampleEve
     public List<Sample> getSamplesForProject( @JCVI_Project Long projectId ) throws Exception {
         Session session = startTransactedSession();
 
-        List<Sample> sBeans = Collections.emptyList();
+        List<Sample> sBeans;
         try {
             SampleDAO sDao = daoFactory.getSampleDAO();
             sBeans = sDao.getAllSamples(projectId, session);
@@ -455,7 +455,7 @@ public class ProjectSampleEventPresentationStateless implements ProjectSampleEve
     public List<Sample> getSamplesForProjectBySearch( @JCVI_Project Long projectId, String sampleVal, int firstResult, int maxResult ) throws Exception {
         Session session = startTransactedSession();
 
-        List<Sample> sBeans = Collections.emptyList();
+        List<Sample> sBeans;
         try {
             SampleDAO sDao = daoFactory.getSampleDAO();
             sBeans = sDao.getAllSamplesBySearch(projectId, sampleVal, firstResult, maxResult, session);
@@ -473,7 +473,7 @@ public class ProjectSampleEventPresentationStateless implements ProjectSampleEve
     public Integer getSampleCountForProjectBySearch( @JCVI_Project Long projectId, String sampleVal) throws Exception {
         Session session = startTransactedSession();
 
-        Integer totalSampleCount = 0;
+        Integer totalSampleCount;
         try {
             SampleDAO sDao = daoFactory.getSampleDAO();
             totalSampleCount = sDao.getSampleCountForProjectBySearch(projectId, sampleVal, session);
@@ -493,7 +493,7 @@ public class ProjectSampleEventPresentationStateless implements ProjectSampleEve
     public List<Sample> getSamplesForProjects( @JCVI_Project List<Long> projectIds ) throws Exception {
         Session session = startTransactedSession();
 
-        List<Sample> sBeans = Collections.emptyList();
+        List<Sample> sBeans;
         try {
             SampleDAO sDao = daoFactory.getSampleDAO();
             sBeans = sDao.getAllSamples(projectIds, session);
@@ -513,7 +513,7 @@ public class ProjectSampleEventPresentationStateless implements ProjectSampleEve
     public List<Sample> getSamplesForProjectByPublicFlag( @JCVI_Project Long projectId, boolean isPublic ) throws Exception {
         Session session = startTransactedSession();
 
-        List<Sample> sBeans = Collections.emptyList();
+        List<Sample> sBeans;
         try {
             SampleDAO sDao = daoFactory.getSampleDAO();
             sBeans = sDao.getSamplesByPublicFlag(projectId, isPublic, session);
@@ -532,7 +532,7 @@ public class ProjectSampleEventPresentationStateless implements ProjectSampleEve
     public List<Sample> getAllSamples(Long flexId, String type, String sSearch, String sortCol, String sortDir, List<String> columnName, List<String> columnSearchArguments) throws Exception {
         Session session = startTransactedSession();
 
-        List<Sample> sBeans = Collections.emptyList();
+        List<Sample> sBeans;
         try {
             SampleDAO sDao = daoFactory.getSampleDAO();
             sBeans = sDao.getAllSamples(flexId, type, sSearch, sortCol, sortDir, columnName, columnSearchArguments, session);
@@ -552,7 +552,7 @@ public class ProjectSampleEventPresentationStateless implements ProjectSampleEve
                                               String sortCol, String sortDir, List<String> columnName, List<String> columnSearchArguments) throws Exception {
         Session session = startTransactedSession();
 
-        List<Sample> sBeans = Collections.emptyList();
+        List<Sample> sBeans;
         try {
             SampleDAO sDao = daoFactory.getSampleDAO();
             sBeans = sDao.getAllSamples(projectIds, attributeNames, sSearch, sortType, sortCol, sortDir, columnName, columnSearchArguments, session);
@@ -570,7 +570,7 @@ public class ProjectSampleEventPresentationStateless implements ProjectSampleEve
     @WebMethod
     public List<Sample> getChildSamples(Long sampleId) throws Exception {
         Session session = startTransactedSession();
-        List<Sample> sBeans = Collections.emptyList();
+        List<Sample> sBeans;
         try {
             SampleDAO sDao = daoFactory.getSampleDAO();
             sBeans = sDao.getChildSamples(sampleId, session);
@@ -623,7 +623,7 @@ public class ProjectSampleEventPresentationStateless implements ProjectSampleEve
 
     @WebMethod
     public List<SampleMetaAttribute> getUniqueSampleMetaAttributes() throws Exception {
-        List<SampleMetaAttribute> smaBeans = new ArrayList<>();
+        List<SampleMetaAttribute> smaBeans;
         try {
             SampleMetaAttributeDAO smaDao = daoFactory.getSampleMetaAttributeDAO();
             Session session = this.startTransactedSession();
@@ -642,7 +642,7 @@ public class ProjectSampleEventPresentationStateless implements ProjectSampleEve
     /** This is needed by app to learn whether it is needed to include sample-specific information wrt event. */
     @WebMethod
     public Boolean isSampleRequired( @JCVI_Project String projectName, String eventName ) throws Exception {
-        Boolean rtnVal = true; // Burdened until shown otherwise.
+        Boolean rtnVal; // Burdened until shown otherwise.
         try {
             EventDAO eventDAO = daoFactory.getEventDAO();
             Session session = this.startTransactedSession();
@@ -667,7 +667,7 @@ public class ProjectSampleEventPresentationStateless implements ProjectSampleEve
     public List<SampleAttribute> getSampleAttributes(Long sampleId) throws Exception {
         Session session = startTransactedSession();
 
-        List<SampleAttribute> sampleAttributes = Collections.emptyList();
+        List<SampleAttribute> sampleAttributes;
         try {
             SampleAttributeDAO saDao = daoFactory.getSampleAttributeDAO();
             sampleAttributes = saDao.getAllAttributes(sampleId, session);
@@ -686,7 +686,7 @@ public class ProjectSampleEventPresentationStateless implements ProjectSampleEve
     public List<SampleAttribute> getSampleAttributes( @JCVI_Sample List<Long> sampleIds ) throws Exception {
         Session session = startTransactedSession();
 
-        List<SampleAttribute> sampleAttributes = Collections.emptyList();
+        List<SampleAttribute> sampleAttributes;
         try {
             SampleAttributeDAO saDao = daoFactory.getSampleAttributeDAO();
             sampleAttributes = saDao.getAllAttributes(sampleIds, session);
@@ -705,7 +705,7 @@ public class ProjectSampleEventPresentationStateless implements ProjectSampleEve
     public SampleAttribute getSampleAttribute(String projectName, String sampleName, String attributeName) throws Exception {
         Session session = startTransactedSession();
 
-        SampleAttribute sampleAttribute = null;
+        SampleAttribute sampleAttribute;
         try {
             SampleAttributeDAO saDao = daoFactory.getSampleAttributeDAO();
             sampleAttribute = saDao.getSampleAttribute(projectName, sampleName, attributeName, session);
@@ -730,7 +730,7 @@ public class ProjectSampleEventPresentationStateless implements ProjectSampleEve
     public List<Event> getEventsForProject(Long projectId) throws Exception {
         Session session = startTransactedSession();
 
-        List<Event> evtBeans = Collections.emptyList();
+        List<Event> evtBeans;
         try {
             EventDAO evtDao = daoFactory.getEventDAO();
             evtBeans = evtDao.getAllEvents(projectId, "Project", null, null, null, -1, -1, null, null, null, null, session);
@@ -749,7 +749,7 @@ public class ProjectSampleEventPresentationStateless implements ProjectSampleEve
     public List<Event> getEventsForProjects( @JCVI_Project List<Long> projectIds ) throws Exception {
         Session session = startTransactedSession();
 
-        List<Event> evtBeans = Collections.emptyList();
+        List<Event> evtBeans;
         try {
             EventDAO evtDao = daoFactory.getEventDAO();
             evtBeans = evtDao.getAllEvents(projectIds, "Project", session);
@@ -770,7 +770,7 @@ public class ProjectSampleEventPresentationStateless implements ProjectSampleEve
                                     String fromd, String tod, List<String> columnName, List<String> columnSearchArguments) throws Exception {
         Session session = startTransactedSession();
 
-        List<Event> evtBeans = Collections.emptyList();
+        List<Event> evtBeans;
         try {
             EventDAO evtDao = daoFactory.getEventDAO();
             evtBeans = evtDao.getAllEvents(flexId, type, sSearch, sortCol, sortDir, start, count, fromd, tod, columnName, columnSearchArguments, session);
@@ -789,7 +789,7 @@ public class ProjectSampleEventPresentationStateless implements ProjectSampleEve
     public List<Event> getEventsForSample(@JCVI_Sample Long sampleId) throws Exception {
         Session session = startTransactedSession();
 
-        List<Event> evtBeans = Collections.emptyList();
+        List<Event> evtBeans;
         try {
             EventDAO evtDao = daoFactory.getEventDAO();
             evtBeans = evtDao.getAllEvents(sampleId, "Sample", null, "date", "asc", -1, -1, null, null, null, null, session);
@@ -808,7 +808,7 @@ public class ProjectSampleEventPresentationStateless implements ProjectSampleEve
     public List<Event> getEventsForSamples( @JCVI_Sample List<Long> sampleIds ) throws Exception {
         Session session = startTransactedSession();
 
-        List<Event> evtBeans = Collections.emptyList();
+        List<Event> evtBeans;
         try {
             EventDAO evtDao = daoFactory.getEventDAO();
             evtBeans = evtDao.getAllEvents(sampleIds, "Sample", session);
@@ -827,7 +827,7 @@ public class ProjectSampleEventPresentationStateless implements ProjectSampleEve
     public List<Event> getEventByType( @JCVI_Project Long projectId, Long eventTypeId ) throws Exception {
         Session session = startTransactedSession();
 
-        List<Event> evtBeans = Collections.emptyList();
+        List<Event> evtBeans;
         try {
             EventDAO evtDao = daoFactory.getEventDAO();
             evtBeans = evtDao.getEventByType(projectId, eventTypeId, session);
@@ -846,7 +846,7 @@ public class ProjectSampleEventPresentationStateless implements ProjectSampleEve
     public List<Event> getEventByTypeAndSample( @JCVI_Sample Long sampleId, Long eventTypeId ) throws Exception {
         Session session = startTransactedSession();
 
-        List<Event> evtBeans = Collections.emptyList();
+        List<Event> evtBeans;
         try {
             EventDAO evtDao = daoFactory.getEventDAO();
             evtBeans = evtDao.getEventByTypeAndSample(sampleId, eventTypeId, session);
@@ -865,7 +865,7 @@ public class ProjectSampleEventPresentationStateless implements ProjectSampleEve
     public List<Event> getEventByLookupValue(Long lookupValueId, String lookupValueStr) throws Exception {
         Session session = startTransactedSession();
 
-        List<Event> evtBeans = Collections.emptyList();
+        List<Event> evtBeans;
 
         try {
             EventDAO evtDao = daoFactory.getEventDAO();
@@ -884,7 +884,7 @@ public class ProjectSampleEventPresentationStateless implements ProjectSampleEve
     public Event getLatestEventForSample(@JCVI_Project Long projectId, @JCVI_Sample Long sampleId, Long eventTypeId) throws Exception {
         Session session = startTransactedSession();
 
-        Event latestEvent = null;
+        Event latestEvent;
         try {
             EventDAO evtDao = daoFactory.getEventDAO();
             latestEvent = evtDao.getLatestEventForSample(projectId, sampleId, eventTypeId, session);
@@ -903,7 +903,7 @@ public class ProjectSampleEventPresentationStateless implements ProjectSampleEve
     public List<Event> getUniqueEventTypes() throws Exception {
         Session session = startTransactedSession();
 
-        List<Event> evtBeans = Collections.emptyList();
+        List<Event> evtBeans;
         try {
             EventDAO evtDao = daoFactory.getEventDAO();
             evtBeans = evtDao.getUniqueEventTypes(session);
@@ -923,7 +923,7 @@ public class ProjectSampleEventPresentationStateless implements ProjectSampleEve
             throws Exception {
         Session session = startTransactedSession();
 
-        List<LookupValue> evtBeans = Collections.emptyList();
+        List<LookupValue> evtBeans;
         try {
             LookupValueDAO lvDao = daoFactory.getLookupValueDAO();
             evtBeans = lvDao.getEventLookupValueListForProjectAndSample(projectId, session);
@@ -942,7 +942,7 @@ public class ProjectSampleEventPresentationStateless implements ProjectSampleEve
     public List<EventAttribute> getEventAttributes(Long eventId,  @JCVI_Project Long projectId ) throws Exception {
         Session session = startTransactedSession();
 
-        List<EventAttribute> eaBeans = Collections.emptyList();
+        List<EventAttribute> eaBeans;
         try {
             EventAttributeDAO eaDao = daoFactory.getEventAttributeDAO();
             eaBeans = eaDao.getEventAttributes(eventId, projectId, session);
@@ -961,7 +961,7 @@ public class ProjectSampleEventPresentationStateless implements ProjectSampleEve
     public List<EventAttribute> getEventAttributes(List<Long> eventIds, @JCVI_Project Long projectId) throws Exception {
         Session session = startTransactedSession();
 
-        List<EventAttribute> eaBeans = Collections.emptyList();
+        List<EventAttribute> eaBeans;
         try {
             EventAttributeDAO eaDao = daoFactory.getEventAttributeDAO();
             eaBeans = eaDao.getEventAttributes(eventIds, projectId, session);
@@ -985,7 +985,7 @@ public class ProjectSampleEventPresentationStateless implements ProjectSampleEve
     public List<EventMetaAttribute> getEventMetaAttributes( @JCVI_Project Long projectId, Long eventTypeId) throws Exception {
         Session session = startTransactedSession();
 
-        List<EventMetaAttribute> emaBeans = Collections.emptyList();
+        List<EventMetaAttribute> emaBeans;
         try {
             EventMetaAttributeDAO emaDao = daoFactory.getEventMetaAttributeDAO();
             emaBeans = emaDao.readAll(projectId, eventTypeId, session);
@@ -1061,7 +1061,7 @@ public class ProjectSampleEventPresentationStateless implements ProjectSampleEve
     public List<EventMetaAttribute> getUniqueEventMetaAttributes() throws Exception {
         Session session = startTransactedSession();
 
-        List<EventMetaAttribute> emaBeans = new ArrayList<>();
+        List<EventMetaAttribute> emaBeans;
         try {
             EventMetaAttributeDAO emaDao = daoFactory.getEventMetaAttributeDAO();
             emaBeans = emaDao.readAllUnique( session );
@@ -1078,7 +1078,7 @@ public class ProjectSampleEventPresentationStateless implements ProjectSampleEve
 
     public LookupValue getLookupValue ( String name, String type) throws Exception, IllegalAccessException {
 
-        LookupValue rtnVal = null;
+        LookupValue rtnVal;
         try {
             LookupValueDAO lookupValueDao = daoFactory.getLookupValueDAO();
             Session session = this.startTransactedSession();
@@ -1096,7 +1096,7 @@ public class ProjectSampleEventPresentationStateless implements ProjectSampleEve
 
     public Event getEvent ( Long eventId ) throws Exception, IllegalAccessException {
 
-        Event rtnVal = null;
+        Event rtnVal;
         try {
             EventDAO eventDao = daoFactory.getEventDAO();
             Session session = this.startTransactedSession();
@@ -1122,7 +1122,7 @@ public class ProjectSampleEventPresentationStateless implements ProjectSampleEve
                                                    ResponseToFailedAuthorization failureResponse,
                                                    AccessLevel accessLevel,
                                                    QueryEntityType queryEntityType ) throws Exception {
-        List<String> rtnVal = null;
+        List<String> rtnVal;
 
         try {
             Session session = this.startTransactedSession();
@@ -1140,7 +1140,7 @@ public class ProjectSampleEventPresentationStateless implements ProjectSampleEve
     }
 
     public List<Project> getAuthorizedProjects( String username, AccessLevel accessLevel ) throws Exception {
-        List<Project> rtnVal = null;
+        List<Project> rtnVal;
 
         try {
             Session session = this.startTransactedSession();
@@ -1158,7 +1158,7 @@ public class ProjectSampleEventPresentationStateless implements ProjectSampleEve
     }
 
     public List<Group> getAllGroup() throws Exception {
-        List<Group> rtnVal = null;
+        List<Group> rtnVal;
 
         try {
             GroupDAO groupDAO= daoFactory.getGroupDAO();
@@ -1176,7 +1176,7 @@ public class ProjectSampleEventPresentationStateless implements ProjectSampleEve
     }
 
     public List<LookupValue> getLookupValueByType(String type) throws Exception {
-        List<LookupValue> rtnVal = null;
+        List<LookupValue> rtnVal;
 
         try {
             LookupValueDAO lookupValueDAO = daoFactory.getLookupValueDAO();
@@ -1194,7 +1194,7 @@ public class ProjectSampleEventPresentationStateless implements ProjectSampleEve
     }
 
     public List<Dictionary> getDictionaries(boolean includeInactive) throws Exception {
-        List<Dictionary> rtnVal = null;
+        List<Dictionary> rtnVal;
 
         try {
             DictionaryDAO dictionaryDAO = daoFactory.getDictionaryDAO();
@@ -1212,7 +1212,7 @@ public class ProjectSampleEventPresentationStateless implements ProjectSampleEve
     }
 
     public List<DictionaryDependency> getDictionaryDependencies() throws Exception {
-        List<DictionaryDependency> rtnVal = null;
+        List<DictionaryDependency> rtnVal;
 
         try {
             DictionaryDAO dictionaryDAO = daoFactory.getDictionaryDAO();
@@ -1230,7 +1230,7 @@ public class ProjectSampleEventPresentationStateless implements ProjectSampleEve
     }
 
     public List<Dictionary> getDictionaryByType(String dictType) throws Exception {
-        List<Dictionary> rtnVal = null;
+        List<Dictionary> rtnVal;
 
         try {
             DictionaryDAO dictionaryDAO = daoFactory.getDictionaryDAO();
@@ -1248,7 +1248,7 @@ public class ProjectSampleEventPresentationStateless implements ProjectSampleEve
     }
 
     public Dictionary getDictionaryByTypeAndCode(String dictType, String dictCode) throws Exception {
-        Dictionary rtnVal = null;
+        Dictionary rtnVal;
 
         try {
             DictionaryDAO dictionaryDAO = daoFactory.getDictionaryDAO();
@@ -1266,7 +1266,7 @@ public class ProjectSampleEventPresentationStateless implements ProjectSampleEve
     }
 
     public List<Dictionary> getDictionaryDependenciesByType(String dictType, String dictCode) throws Exception {
-        List<Dictionary> rtnVal = null;
+        List<Dictionary> rtnVal;
 
         try {
             DictionaryDAO dictionaryDAO = daoFactory.getDictionaryDAO();
@@ -1284,7 +1284,7 @@ public class ProjectSampleEventPresentationStateless implements ProjectSampleEve
     }
 
     public List<Object[]> getAllDictionaryTypeCodePairs() throws Exception {
-        List<Object[]> rtnVal = null;
+        List<Object[]> rtnVal;
 
         try {
             DictionaryDAO dictionaryDAO = daoFactory.getDictionaryDAO();

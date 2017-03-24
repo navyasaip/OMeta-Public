@@ -216,7 +216,7 @@ public class SecurityDAO extends HibernateDAO {
 
         ids = uniquifyIds(ids);
 
-        String queryStr = null;
+        String queryStr;
         if ( accessLevel == AccessLevel.View  ) {
             queryStr = openAndSecuredIdsQuery.replace( PROJ_GRP_SUBST_STR, VIEW_PROJECT_GROUP_FIELD );
         }
@@ -265,7 +265,7 @@ public class SecurityDAO extends HibernateDAO {
         // Need to avoid sending same name multiple times.
         names = uniquifyNames(names);
 
-        String queryStr = null;
+        String queryStr;
         if ( accessLevel == AccessLevel.View  ) {
             queryStr = openAndSecuredQuery.replace( PROJ_GRP_SUBST_STR, VIEW_PROJECT_GROUP_FIELD );
         }

@@ -259,7 +259,7 @@ public class SampleDAO extends HibernateDAO {
     }
 
     public Integer getSampleCountForProjectBySearch(Long projectId, String sampleVal, Session session) throws DAOException {
-        Integer totalSampleCount = 0;
+        Integer totalSampleCount;
         try {
             Criteria crit = session.createCriteria( Sample.class );
             crit.add(Restrictions.eq("projectId", projectId));
@@ -313,7 +313,7 @@ public class SampleDAO extends HibernateDAO {
     public List<Sample> getAllSamples(Long flexId, String type, String sSearch, String sortCol, String sortDir, List<String> columnName, List<String> columnSearchArguments, Session session) throws DAOException {
         List<Sample> sampleList = new ArrayList<>();
         try {
-            List results = null;
+            List results;
 
             StringBuilder sql = new StringBuilder(" select S1.*, S2.sample_name parent, CONCAT(A.actor_last_name,',',A.actor_first_name) user," +
                     " SA2.sampla_attribute_date attribute_value_date, SA2.sampla_attribute_float attribute_value_float, SA2.sampla_attribute_str attribute_value_str, SA2.sampla_attribute_int attribute_value_int " +
@@ -429,7 +429,7 @@ public class SampleDAO extends HibernateDAO {
         String defaultAttributes[] = {Constants.ATTR_PROJECT_NAME, Constants.ATTR_SAMPLE_NAME, Constants.ATTR_PARENT_SAMPLE_NAME};
 
         try {
-            List results = null;
+            List results;
             boolean isInt = (sSearch!=null && Pattern.compile("\\d+").matcher(sSearch).matches());
             boolean isSearch = (sSearch!=null && !sSearch.isEmpty());
             boolean isSort = (sortCol!=null && !sortCol.isEmpty() && sortDir!=null && !sortDir.isEmpty());

@@ -228,7 +228,7 @@ public class EventPersistenceHelper {
     }
 
     public void setDictionaryParentValue(List<FileReadAttributeBean> aBeans, AttributeType aType) throws Exception {
-        Map<String,String> controlMap = null;
+        Map<String,String> controlMap;
         switch( aType ) {
             case project:
                 controlMap = pmaNameToControls;
@@ -266,7 +266,7 @@ public class EventPersistenceHelper {
     /** Check that the value given is within the control set, if a control set was given. */
     public void checkControlledValue( String attributeName, String attributeValue, AttributeType aType )
             throws Exception {
-        Map<String,String> controlMap = null;
+        Map<String,String> controlMap;
         switch( aType ) {
             case project:
                 controlMap = pmaNameToControls;
@@ -655,7 +655,7 @@ public class EventPersistenceHelper {
             String projectName, AttributeType attributeType)
         throws DAOException {
 
-        Map<String, Boolean> rtnMap = null;
+        Map<String, Boolean> rtnMap;
         if ( attributeType == AttributeType.project ) {
 
             requiredPmaToSatisfied = new HashMap<>();

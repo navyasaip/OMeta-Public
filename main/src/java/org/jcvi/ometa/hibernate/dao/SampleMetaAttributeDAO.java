@@ -128,7 +128,7 @@ public class SampleMetaAttributeDAO extends HibernateDAO {
      * get all unique meta-attributes
      */
     public List<SampleMetaAttribute> readAllUnique(Session session) throws DAOException {
-        List<SampleMetaAttribute> attributeList = new ArrayList<>();
+        List<SampleMetaAttribute> attributeList;
         try {
             String sql =
                     " select SMA.* from sample_meta_attribute SMA, " +

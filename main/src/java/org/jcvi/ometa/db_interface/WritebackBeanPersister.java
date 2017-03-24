@@ -64,7 +64,7 @@ public class WritebackBeanPersister implements BeanPersistenceFacadeI {
     private ModelValidator modelValidator;
 
     public WritebackBeanPersister(Properties props, SessionAndTransactionManagerI sessionAndTransactionManager) {
-        String sessionFactoryName = null;
+        String sessionFactoryName;
 
         if (props != null) {
             // Gather dependencies for creating DAO's.
@@ -545,8 +545,8 @@ public class WritebackBeanPersister implements BeanPersistenceFacadeI {
             ProjectMetaAttributeDAO pmaDAO = daoFactory.getProjectMetaAttributeDAO();
             SampleMetaAttributeDAO smaDAO = daoFactory.getSampleMetaAttributeDAO();
 
-            ProjectMetaAttribute pma = null;
-            SampleMetaAttribute sma = null;
+            ProjectMetaAttribute pma;
+            SampleMetaAttribute sma;
 
             Map<String, Long> projNameVsId = new HashMap<>();
             for (EventMetaAttribute attribute : emaBeans) {
@@ -899,8 +899,7 @@ public class WritebackBeanPersister implements BeanPersistenceFacadeI {
 
     private ProjectMetaAttribute getProjectMetaAttribute(Long projectId, Long lookupValueId) throws Exception {
         ProjectMetaAttributeDAO pmaDAO = daoFactory.getProjectMetaAttributeDAO();
-        ProjectMetaAttribute pma = null;
-        pma = pmaDAO.getProjectMetaAttribute(lookupValueId, projectId, session);
+        ProjectMetaAttribute pma = pmaDAO.getProjectMetaAttribute(lookupValueId, projectId, session);
         return pma;
     }
     private boolean isProjectAttribute(Long projectId, Long lookupValueId) throws Exception {
@@ -909,8 +908,7 @@ public class WritebackBeanPersister implements BeanPersistenceFacadeI {
 
     private SampleMetaAttribute getSampleMeatAttribute(Long projectId, Long lookupValueId) throws Exception {
         SampleMetaAttributeDAO smaDAO = daoFactory.getSampleMetaAttributeDAO();
-        SampleMetaAttribute sma = null;
-        sma = smaDAO.getSampleMetaAttribute(lookupValueId, projectId, session);
+        SampleMetaAttribute sma = smaDAO.getSampleMetaAttribute(lookupValueId, projectId, session);
         return sma;
     }
     private boolean isSampleAttribute(Long projectId, Long lookupValueId) throws Exception {

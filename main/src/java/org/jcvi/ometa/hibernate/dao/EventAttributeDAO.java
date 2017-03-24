@@ -62,7 +62,7 @@ public class EventAttributeDAO extends HibernateDAO {
     }
 
     public List<EventAttribute> getEventAttributes( Long eventId, Long projectId, Session session ) throws DAOException {
-        List<EventAttribute> eaList = null;
+        List<EventAttribute> eaList;
         try {
             Criteria crit = session.createCriteria( EventAttribute.class );
             crit.add( Restrictions.eq("eventId", eventId) );

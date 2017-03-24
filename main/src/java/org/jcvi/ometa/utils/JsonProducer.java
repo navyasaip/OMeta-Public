@@ -176,7 +176,7 @@ public class JsonProducer implements Runnable {
                     availableAttributes.add(ema.getLookupValue().getName());
             }
 
-            List<String> parameterizedAttributes = null;
+            List<String> parameterizedAttributes;
             if (attributes == null || attributes.equals("") || "ALL".equals(attributes)) {
                 parameterizedAttributes = availableAttributes;
             } else {
@@ -197,7 +197,7 @@ public class JsonProducer implements Runnable {
             Sheet workSheet = workBook.createSheet();
             int cellIndex = 0, rowIndex = 0;
             Row singleRow = workSheet.createRow(rowIndex++);
-            Cell headerCell = null;
+            Cell headerCell;
 
             //Header row cell style
             CellStyle style = workBook.createCellStyle();
@@ -712,7 +712,7 @@ public class JsonProducer implements Runnable {
      * @return String value according to status and given url
      */
     private String displayLinkOnlyForPublished(String status, String url) {
-        String rtnVal = null;
+        String rtnVal;
         if(status.equals("")) {
             rtnVal = status;
         } else {

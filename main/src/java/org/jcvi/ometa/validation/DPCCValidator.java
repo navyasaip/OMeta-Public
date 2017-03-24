@@ -66,7 +66,7 @@ public class DPCCValidator {
 
     public static void validateFutureDate(String value) throws Exception {
         if(value != null && !value.equals("NA")) {
-            Date valueToDate = null;
+            Date valueToDate;
 
             try {
                 valueToDate = (Date)new SimpleDateFormat(Constants.DATE_ALTERNATIVE_FORMAT).parse(value);
@@ -155,7 +155,7 @@ public class DPCCValidator {
 
     public static Boolean validateNumberPattern(String value, String pattern,Boolean isNumber,String otherPattern, String message) throws Exception{
 
-        Boolean isValid = false;
+        Boolean isValid;
 
         if (value.matches(pattern)) {
             isValid=true;

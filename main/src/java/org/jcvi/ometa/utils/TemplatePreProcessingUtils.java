@@ -64,7 +64,7 @@ public class TemplatePreProcessingUtils {
             headers.add(1, new HeaderDetail(Constants.ATTR_SAMPLE_NAME, true, "string", "", null));
         }
 
-        InputStream templateStream = null;
+        InputStream templateStream;
         if(type.equals("e")) {
             templateStream = this.createExcel(headers, isProjectRegistration, projectName, sampleName, eventName);
         } else {
@@ -223,7 +223,7 @@ public class TemplatePreProcessingUtils {
         Row commentRow = sheet.createRow(rowIndex++);
 
         int headerIndex = 0;
-        Cell cell = null;
+        Cell cell;
         for(HeaderDetail detail : attributes) {
             cell = attributeRow.createCell(headerIndex);
             cell.setCellValue(detail.getDisplayHeader());
@@ -270,8 +270,8 @@ public class TemplatePreProcessingUtils {
 
     private void addValidations(int headerIndex, HeaderDetail detail, Sheet sheet) {
         CellRangeAddressList addressList = new CellRangeAddressList(2, 100, headerIndex, headerIndex);
-        DVConstraint constraint = null;
-        DataValidation validation = null;
+        DVConstraint constraint;
+        DataValidation validation;
         //adds select box with option values
         if(detail.hasOptions()) {
             constraint = DVConstraint.createExplicitListConstraint(detail.getOptionsArray());
@@ -320,7 +320,7 @@ public class TemplatePreProcessingUtils {
 
         List<String> columns = new ArrayList<>();
 
-        String currProjectName = null;
+        String currProjectName;
 
         boolean hasSampleName = false;
         boolean hasParentSampleName = false;
@@ -537,7 +537,7 @@ public class TemplatePreProcessingUtils {
 
 
     public File preProcessTemplateFile(File originalFile) {
-        File outputFile = null;
+        File outputFile;
         try {
             // Setup scratch location.
             String userBase = System.getProperty("user.home");
@@ -550,7 +550,7 @@ public class TemplatePreProcessingUtils {
             BufferedReader br = new BufferedReader( new FileReader( originalFile ) );
             PrintWriter pw = new PrintWriter( new FileWriter( outputFile ) );
 
-            String inline = null;
+            String inline;
             while ( null != ( inline = br.readLine() ) ) {
                 // Will output all lines except those having pound-sign prefixes.
                 if ( ! inline.startsWith( "#" ) ) {

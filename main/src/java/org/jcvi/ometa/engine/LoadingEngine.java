@@ -85,7 +85,7 @@ public class LoadingEngine {
                 //engine.dispatchByFilename();
             }
 
-            String finalMessage = null;
+            String finalMessage;
             if(success == 1) {
                 finalMessage = "Loading process done!";
             } else {
@@ -234,7 +234,6 @@ public class LoadingEngine {
             writer.writeMultiType(collector);
 
         } catch (Exception ex) {
-            success = 0;
             throw ex;
         } finally {
             if (scratchLoc.exists()) {
@@ -355,11 +354,7 @@ public class LoadingEngine {
         String eventFileName = usage.getInputFilename();
         String outputPath = usage.getOutputLocation();
 
-        int batchSizeInt = 1;
         String batchSize = usage.getBatchSize();
-        if(batchSize != null && !batchSize.isEmpty()) {
-            batchSizeInt = Integer.parseInt(batchSize);
-        }
 
         String submissionId = Long.toString(CommonTool.getGuid()); //submission Id
 
@@ -451,7 +446,6 @@ public class LoadingEngine {
                         } catch(java.lang.IllegalAccessError iae) {
                             String exceptionString = iae.getCause() == null ? iae.getMessage() : iae.getCause().getMessage();
                             logWriter.write(exceptionString + "\n");
-                            success = 0;
                             throw iae;
                         }catch (Exception ex) {
                             boolean isLogged = false;
@@ -494,7 +488,6 @@ public class LoadingEngine {
         } catch (Exception ex) {
             String exceptionString = ex.getCause() == null ? ex.getMessage() : ex.getCause().getMessage();
             logWriter.write(exceptionString + "\n");
-            success = 0;
             throw ex;
         }  finally {
             if(scratchLoc != null  &&  scratchLoc.exists()) {

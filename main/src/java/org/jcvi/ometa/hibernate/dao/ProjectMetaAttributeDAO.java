@@ -111,7 +111,7 @@ public class ProjectMetaAttributeDAO extends HibernateDAO {
      * get all unique meta-attributes
      */
     public List<ProjectMetaAttribute> readAllUnique(Session session) throws DAOException {
-        List<ProjectMetaAttribute> attributeList = new ArrayList<>();
+        List<ProjectMetaAttribute> attributeList;
         try {
             String sql =
                     " select PMA.* from project_meta_attribute PMA, " +

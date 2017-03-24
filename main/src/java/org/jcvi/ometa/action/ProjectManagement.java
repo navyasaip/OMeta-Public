@@ -94,7 +94,7 @@ public class ProjectManagement extends ActionSupport {
             error.append(this.projectName + ":");
             error.append(this.eventName + ":");
 
-            String errorMsg = "";
+            String errorMsg;
             if (ex.getClass() == ForbiddenResourceException.class) {
                 errorMsg = Constants.DENIED_USER_EDIT_MESSAGE;
                 rtnVal = Constants.FORBIDDEN_ACTION_RESPONSE;

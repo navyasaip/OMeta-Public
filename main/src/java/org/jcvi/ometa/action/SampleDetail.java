@@ -71,7 +71,7 @@ public class SampleDetail extends ActionSupport {
         String rtnVal = SUCCESS;
 
         try {
-            LookupValue tempLookupValue = null;
+            LookupValue tempLookupValue;
 
             detailMap = new HashMap<>();
 

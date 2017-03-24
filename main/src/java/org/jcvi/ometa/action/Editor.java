@@ -175,14 +175,13 @@ public class Editor extends ActionSupport {
                     }
 
                 } else if (editType.equals("projectAttribute")) {
-                    Object oldValue = null, newValue = null;
+                    Object newValue;
                     List<ProjectAttribute> projectAttributes = readPersister.getProjectAttributes(projectId);
 
                     for (ProjectAttribute pa : projectAttributes) {
                         for (ProjectAttribute spa : projectElements) {
                             if(pa != null && spa != null) {
                                 if (pa.getId().compareTo(spa.getId()) == 0) {
-                                    oldValue = ModelValidator.getModelValue(pa.getMetaAttribute().getLookupValue(), pa);
                                     newValue = ModelValidator.getModelValue(pa.getMetaAttribute().getLookupValue(), spa);
 
                                     if (spa.getAttributeDateValue() != null && spa.getAttributeDateValue().compareTo(pa.getAttributeDateValue()) != 0) {
@@ -308,14 +307,13 @@ public class Editor extends ActionSupport {
                     psewt.updateSample(sample);
 
                 } else if (editType.equals("sampleAttribute")) {
-                    Object oldValue = null, newValue = null;
+                    Object newValue;
                     List<SampleAttribute> sampleAttributes = readPersister.getSampleAttributes(sampleId);
 
                     for (SampleAttribute sa : sampleAttributes) {
                         for (SampleAttribute ssa : sampleElements) {
                             if(sa != null && ssa != null) {
                                 if (sa.getId().compareTo(ssa.getId()) == 0) {
-                                    oldValue = ModelValidator.getModelValue(sa.getMetaAttribute().getLookupValue(), sa);
                                     newValue = ModelValidator.getModelValue(sa.getMetaAttribute().getLookupValue(), ssa);
 
                                     if (ssa.getAttributeDateValue() != null && ssa.getAttributeDateValue().compareTo(sa.getAttributeDateValue()) != 0) {

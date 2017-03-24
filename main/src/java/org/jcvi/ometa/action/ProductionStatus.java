@@ -182,7 +182,7 @@ public class ProductionStatus extends ActionSupport implements IAjaxAction {
     }
 
     public String statusExcel() {
-        String rtnVal = SUCCESS;
+        String rtnVal;
 
         try {
             isExcel = true;
@@ -339,7 +339,7 @@ public class ProductionStatus extends ActionSupport implements IAjaxAction {
             boolean hasEventAttribute = false;
             boolean hasSampleAttribute = false;
 
-            String tempMetaName = null;
+            String tempMetaName;
             List<String> attributeList = new ArrayList<>();
             List<ProjectMetaAttribute> allProjectMetaAttributes = readPersister.getProjectMetaAttributes(projectIds);
             for (ProjectMetaAttribute pma : allProjectMetaAttributes) {
@@ -418,7 +418,7 @@ public class ProductionStatus extends ActionSupport implements IAjaxAction {
             Map<Long, List<SampleAttribute>> sampleIdVsAttributeList = getSampleVsAttributeList(sampleIdList);
             Map<Long, List<Event>> sampleIdVsEventList = getSampleIdVsEventList(sampleIdList);
 
-            Project currProject = null;
+            Project currProject;
 
             Map<Long, Project> projects = new HashMap<>(); //for caching projects
             Map<Long, Map<String, Object>> projectAttributes = new HashMap<>(); // for caching project's attribute value map
@@ -450,7 +450,7 @@ public class ProductionStatus extends ActionSupport implements IAjaxAction {
                 sampleAttrMap.put("sampleId", sample.getSampleId());
 
                 if (sample.getParentSampleId() != null) { //get parent sample information and cache it
-                    Sample parentSample = null;
+                    Sample parentSample;
                     if(parentSamples.containsKey(sample.getParentSampleId())) {
                         parentSample = parentSamples.get(sample.getParentSampleId());
                     } else {

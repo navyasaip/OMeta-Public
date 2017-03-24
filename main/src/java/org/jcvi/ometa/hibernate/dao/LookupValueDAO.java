@@ -45,7 +45,7 @@ import java.util.List;
 public class LookupValueDAO extends HibernateDAO {
 
     public LookupValue getLookupValue( String lvName, Session session ) throws DAOException {
-        LookupValue returnVal = null;
+        LookupValue returnVal;
         try {
             Criteria crit = session.createCriteria( LookupValue.class );
             crit.add( Restrictions.eq( "name", lvName) );
@@ -60,7 +60,7 @@ public class LookupValueDAO extends HibernateDAO {
 
     /** Get a lookup value of the type given, name given. */
     public LookupValue getLookupValue( String lvName, String lookupType, Session session ) throws DAOException {
-        LookupValue returnVal = null;
+        LookupValue returnVal;
         try {
             Criteria crit = session.createCriteria( LookupValue.class );
             crit.add( Restrictions.eq( "name", lvName) );
@@ -75,7 +75,7 @@ public class LookupValueDAO extends HibernateDAO {
     }
 
     public LookupValue getEventStatusLookupValue( boolean active, Session session ) throws DAOException {
-        LookupValue returnVal = null;
+        LookupValue returnVal;
         try {
             returnVal = this.getLookupValue(active?EVENT_STATUS_ACTIVE:EVENT_STATUS_INACTIVE, ModelValidator.EVENT_STATUS_LV_TYPE_NAME, session);
         } catch ( Exception ex ) {
@@ -86,11 +86,10 @@ public class LookupValueDAO extends HibernateDAO {
 
     /** Return ALL event-type lookup values. */
     public List<LookupValue> getEventLookupValueList( Session session ) throws DAOException {
-        List<LookupValue>  rtnVal = null;
+        List<LookupValue>  rtnVal;
         try {
             rtnVal = this.getLookupValueByType(ModelValidator.EVENT_TYPE_LV_TYPE_NAME, session);
         } catch ( Exception ex ) {
-            rtnVal = Collections.emptyList();
             throw new DAOException( ex );
         }
 
@@ -98,7 +97,7 @@ public class LookupValueDAO extends HibernateDAO {
     }
 
     public List<LookupValue> getEventLookupValueListForProjectAndSample( Long projectId, Session session ) throws DAOException {
-        List<LookupValue>  rtnVal = new ArrayList<>();
+        List<LookupValue>  rtnVal;
         try {
             String hql = "from LookupValue where lookupValueId in "
                     + "(select distinct(eventTypeLookupId) from EventMetaAttribute where projectId=" + projectId + ") ";
@@ -106,7 +105,6 @@ public class LookupValueDAO extends HibernateDAO {
             Query query = session.createQuery( hql );
             rtnVal = query.list();
         } catch ( Exception ex ) {
-            rtnVal = Collections.emptyList();
             throw new DAOException( ex );
         }
 
@@ -114,13 +112,12 @@ public class LookupValueDAO extends HibernateDAO {
     }
 
     public List<LookupValue> getLookupValueByType(String type, Session session) throws DAOException {
-        List<LookupValue> rtnVal = null;
+        List<LookupValue> rtnVal;
         try {
             Criteria crit = session.createCriteria( LookupValue.class );
             crit.add(Restrictions.eq("type", type));
             rtnVal = crit.list();
         } catch ( Exception ex ) {
-            rtnVal = Collections.emptyList();
             throw new DAOException( ex );
         }
         return rtnVal;

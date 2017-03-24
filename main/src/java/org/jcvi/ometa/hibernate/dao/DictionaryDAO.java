@@ -18,7 +18,7 @@ import java.util.List;
 public class DictionaryDAO extends HibernateDAO {
 
     public List<Dictionary> getDictionaries(Session session, boolean includeInactive) throws DAOException {
-        List<Dictionary> rtnVal = null;
+        List<Dictionary> rtnVal;
 
         try {
             Criteria crit = session.createCriteria( Dictionary.class );
@@ -32,7 +32,7 @@ public class DictionaryDAO extends HibernateDAO {
     }
 
     public List<DictionaryDependency> getDictionaryDependencies(Session session) throws DAOException {
-        List<DictionaryDependency> rtnVal = null;
+        List<DictionaryDependency> rtnVal;
 
         try {
             Criteria crit = session.createCriteria( DictionaryDependency.class );
@@ -45,7 +45,7 @@ public class DictionaryDAO extends HibernateDAO {
     }
 
     public List<Dictionary> getDictionaryByType( String dictType, Session session ) throws DAOException {
-        List<Dictionary> rtnVal = null;
+        List<Dictionary> rtnVal;
 
         try {
             Criteria crit = session.createCriteria( Dictionary.class );
@@ -60,7 +60,7 @@ public class DictionaryDAO extends HibernateDAO {
     }
 
     public Dictionary getDictionaryByTypeAndCode(String dictType, String dictCode, Session session) throws DAOException {
-        Dictionary rtnVal = null;
+        Dictionary rtnVal;
 
         try {
             Criteria crit = session.createCriteria( Dictionary.class );
@@ -76,7 +76,7 @@ public class DictionaryDAO extends HibernateDAO {
     }
 
     public List<Dictionary> getDictionaryDependenciesByType( String dictType, String dictCode, Session session ) throws DAOException {
-        List<Dictionary> rtnVal = null;
+        List<Dictionary> rtnVal;
 
         try {
             String sql = " select distinct * from ifx_projects.dictionary d " +
@@ -99,7 +99,7 @@ public class DictionaryDAO extends HibernateDAO {
     }
 
     public List<Object[]> getAllDictionaryTypeCodePairs(Session session) throws DAOException {
-        List<Object[]> rtnVal = null;
+        List<Object[]> rtnVal;
 
         try {
             ProjectionList projList = Projections.projectionList();

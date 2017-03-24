@@ -207,7 +207,7 @@ public class SharedAjax extends ActionSupport implements IAjaxAction {
 
             List<String> displayFields = Arrays.asList(this.projectPopupAttributes.split(","));
 
-            List<Project> projects = null;
+            List<Project> projects;
             if(this.projectName != null && !this.projectName.isEmpty()) {
                 Project requestedProject = this.readPersister.getProject(this.projectName);
                 projects = new ArrayList<>(1);
@@ -280,10 +280,8 @@ public class SharedAjax extends ActionSupport implements IAjaxAction {
             aaData = new ArrayList<Map>();
 
             if(type != null && type.equals("single")){
-                List<SampleAttribute> sampleAttributes = null;
-
                 Sample sample = readPersister.getSample(this.projectId, this.sampleVal);
-                sampleAttributes = readPersister.getSampleAttributes(sample.getSampleId());
+                List<SampleAttribute> sampleAttributes = sampleAttributes = readPersister.getSampleAttributes(sample.getSampleId());
 
                 Map<String, Object> attributeMap = new HashMap<>(sampleAttributes.size());
                 for (SampleAttribute sa : sampleAttributes) {
@@ -359,7 +357,7 @@ public class SharedAjax extends ActionSupport implements IAjaxAction {
                 String value = fileAttribute.getAttributeStringValue();
                 String[] paths = value.split(",");
                 String absoluteFileName;
-                File file = null;
+                File file;
 
                 if(this.fileName.equals("DOWNLOADALL")){
                     byte[] bytes;

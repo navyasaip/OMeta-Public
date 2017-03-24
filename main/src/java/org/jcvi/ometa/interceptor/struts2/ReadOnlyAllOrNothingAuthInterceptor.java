@@ -72,7 +72,7 @@ public class ReadOnlyAllOrNothingAuthInterceptor implements Interceptor {
     public String intercept( ActionInvocation invocation ) throws Exception {
         lazyInit();
 
-        String rtnVal = "error";
+        String rtnVal;
 
         ActionContext invocationContext = invocation.getInvocationContext();
         Map<String,Object> session = invocationContext.getSession();

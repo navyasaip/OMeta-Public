@@ -73,7 +73,7 @@ public class FileLoader {
             SampleDAO sampleDao = new SampleDAO();
 
             List<Project> projects = projectDao.getProjectsByPublicFlag(false, session);
-            File directory = null;
+            File directory;
             for(Project project : projects) {
                 List<Sample> samples = sampleDao.getSamplesByPublicFlag(project.getProjectId(), false, session);
                 String unspacedPorjectName = project.getProjectName().replaceAll(" ", "_"); //project folder

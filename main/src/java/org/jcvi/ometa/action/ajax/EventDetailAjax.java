@@ -255,7 +255,7 @@ public class EventDetailAjax extends ActionSupport implements IAjaxAction {
     }
 
     private int checkEditPrivilege() throws Exception { //check edit permission
-        int canEdit = 0;
+        int canEdit;
         String userName = ServletActionContext.getRequest().getRemoteUser();
         Project currProject = readPersister.getProject(projectId);
         projectName = currProject.getProjectName();

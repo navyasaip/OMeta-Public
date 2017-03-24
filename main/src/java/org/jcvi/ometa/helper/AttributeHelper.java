@@ -66,9 +66,9 @@ public class AttributeHelper {
                     }
 
                     //get project/sample attributes
-                    List<ProjectAttribute> paList = null;
+                    List<ProjectAttribute> paList;
                     Map<Long, ProjectAttribute> paMap = null;
-                    List<SampleAttribute> saList = null;
+                    List<SampleAttribute> saList;
                     Map<Long, SampleAttribute> saMap = null;
                     if(isProject) {
                         paList = readPersister.getProjectAttributes(projectId);

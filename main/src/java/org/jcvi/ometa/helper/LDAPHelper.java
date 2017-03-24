@@ -33,7 +33,7 @@ public class LDAPHelper {
     }
 
     public boolean resetPassword(String userName, String userFullName, String userMail) throws Exception {
-        boolean beenReset = false;
+        boolean beenReset;
 
         int ldapPort = LDAPConnection.DEFAULT_PORT;
         int ldapVersion = LDAPConnection.LDAP_V3;
@@ -83,7 +83,7 @@ public class LDAPHelper {
     }
 
     public boolean updatePassword(String userName, String oldPass, String newPass) throws Exception {
-        boolean modified = false;
+        boolean modified;
 
         int ldapPort = LDAPConnection.DEFAULT_PORT;
         int ldapVersion = LDAPConnection.LDAP_V3;
@@ -127,7 +127,7 @@ public class LDAPHelper {
     }
 
     public boolean createNewUser(String userName, String firstName, String lastName, String password, String email , String phone, String desc) throws Exception {
-        boolean created = false;
+        boolean created;
         LDAPConnection lc = new LDAPConnection();
 
         try {

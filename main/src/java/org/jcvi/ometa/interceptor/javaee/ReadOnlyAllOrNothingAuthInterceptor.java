@@ -75,7 +75,7 @@ public class ReadOnlyAllOrNothingAuthInterceptor {
         logger.debug( "Interceptor being invoked." );
         lazyInit();
 
-        Object rtnVal = null;
+        Object rtnVal;
 
         String user = null;
         Principal principal = context.getCallerPrincipal();  // Expect to ALWAYS have a caller principal.
@@ -84,7 +84,7 @@ public class ReadOnlyAllOrNothingAuthInterceptor {
         }
         logger.debug( "Found user " + user );
 
-        List<? extends Object> approved = null;
+        List<? extends Object> approved;
         approved = interceptorHelper.checkAnnotatedMethodPermissions(invocationContext, user);
 
         if ( approved != null ) {

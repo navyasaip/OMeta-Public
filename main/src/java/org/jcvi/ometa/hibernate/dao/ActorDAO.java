@@ -90,7 +90,7 @@ public class ActorDAO extends HibernateDAO {
     }
 
     public boolean isActorAdmin( String loginName, Session session ) throws DAOException {
-        boolean isAdmin = false;
+        boolean isAdmin;
         try {
             String sql = " select A.* from actor A, actor_group AG, groups G, lookup_value LV " +
                     " where A.actor_username=:userName and AG.actgrp_actor_id=A.actor_id and G.group_id=AG.actgrp_group_id " +

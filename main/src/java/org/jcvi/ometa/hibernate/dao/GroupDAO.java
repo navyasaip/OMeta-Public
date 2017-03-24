@@ -50,7 +50,7 @@ public class GroupDAO extends HibernateDAO {
     }
 
     public Group getGroupByLookupId(Long nameId, Session session) throws DAOException {
-        Group rtnVal = null;
+        Group rtnVal;
         try {
             Criteria crit = session.createCriteria(Group.class);
             crit.add(Restrictions.eq("nameLookupId", nameId));

@@ -63,7 +63,7 @@ public class OntologyAjax extends ActionSupport implements IAjaxAction {
 
         result = new ArrayList();
         try {
-            OntologyService oservice = null;
+            OntologyService oservice;
             if(ser!=null && ser.equalsIgnoreCase("bio")) {
                 oservice = new BioportalOntologyService();
             } else {

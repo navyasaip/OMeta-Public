@@ -184,7 +184,7 @@ public class ProductionLoader {
                 for (int i = 0; i < metadata.getColumnCount(); i++) {
                     int colnum = i + 1;
 
-                    Object value = null;
+                    Object value;
 
                     if (metadata.getColumnTypeName(colnum).equalsIgnoreCase("VARBINARY")) {
                         Blob blob = fetchSourceResults.getBlob(colnum);
@@ -262,7 +262,7 @@ public class ProductionLoader {
      * @throws Exception
      */
     private ResultSet getResultSet(String query, Statement fetchStmt) throws Exception {
-        ResultSet fetchSourceResults = null;
+        ResultSet fetchSourceResults;
         try {
             fetchSourceResults = fetchStmt.executeQuery(query);
         } catch (Exception ex) {
@@ -282,23 +282,13 @@ public class ProductionLoader {
      * @throws IOException thrown for called methods.
      */
     private String getInsertMakerQuery(InputStream nextInputStream) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(nextInputStream));
-
-        // All data in the input stream is concatenated into one SQL statement.
-        StringBuilder statementMakerBuilder = new StringBuilder();
-
-        String inline = null;
-        while (null != (inline = br.readLine())) {
-            if (!inline.startsWith("--")) {
-                statementMakerBuilder.append(inline).append(' ');
-            }
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(nextInputStream))) {
+             return br.lines().filter(inline -> inline.startsWith("--")).collect(Collectors.joining(" "));
         }
-        br.close();
-        return statementMakerBuilder.toString();
     }
 
     protected String createResourceName(String tableName) {
-        String resourceName = null;
+        String resourceName;
         if (pushNonPublicData) {
             resourceName = NONPUBLIC_INSERT_RESOURCE_PREFIX + tableName + INSERT_RESOURCE_SUFFIX;
         } else {

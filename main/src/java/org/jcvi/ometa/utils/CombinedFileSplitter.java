@@ -65,7 +65,7 @@ public class CombinedFileSplitter {
 
     public void process(File infile, File outdir) throws Exception {
         BufferedReader rdr = new BufferedReader(new FileReader(infile));
-        String inbuf = null;
+        String inbuf;
 
         boolean previousIsEmptyLine = true;
         PrintWriter writer = null;

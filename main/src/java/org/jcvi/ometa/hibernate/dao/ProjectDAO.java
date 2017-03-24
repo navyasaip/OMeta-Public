@@ -119,7 +119,7 @@ public class ProjectDAO extends HibernateDAO {
     }
 
     public Project getProject( Long projectId, Session session ) throws DAOException {
-        Project returnVal = null;
+        Project returnVal;
         try {
             Criteria crit = session.createCriteria( Project.class );
             crit.add( Restrictions.eq( "projectId", projectId ) );
@@ -203,7 +203,7 @@ public class ProjectDAO extends HibernateDAO {
     }
 
     public List<Project> getChildProjects( Long projectId, Session session ) throws DAOException {
-        List<Project> returnVal = new ArrayList<>();
+        List<Project> returnVal;
         try {
             SQLQuery query = session.createSQLQuery( CHILD_PROJECTS_SQL_QUERY );
             /*query.addScalar(RTN_PROJECT_NAME, Hibernate.STRING );

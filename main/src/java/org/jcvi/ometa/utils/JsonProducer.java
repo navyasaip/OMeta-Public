@@ -158,12 +158,7 @@ public class JsonProducer implements Runnable {
             availableAttributes.add("Sample Name");
 
             List<Project> projects = pseEjb.getProjects(projectNameList);
-            List<Long> projectIds = new ArrayList<>();
-            Map<String, Long> projectNameVsId = new HashMap<>();
-            for (Project project : projects) {
-                projectIds.add(project.getProjectId());
-                projectNameVsId.put(project.getProjectName(), project.getProjectId());
-            }
+            List<Long> projectIds = projects.stream().map(Project::getProjectId).collect(Collectors.toList());
 
             List<ProjectMetaAttribute> allProjectMetaAttributes = pseEjb.getProjectMetaAttributes(projectIds);
             for (ProjectMetaAttribute pma : allProjectMetaAttributes) {

@@ -117,12 +117,7 @@ public class ProductionStatus extends ActionSupport implements IAjaxAction {
 
             // Obtain collections of data for all projects.
             List<Project> projects = readPersister.getProjects(projectNameList);
-            List<Long> projectIds = new ArrayList<>();
-            Map<String, Long> projectNameVsId = new HashMap<>();
-            for (Project project : projects) {
-                projectIds.add(project.getProjectId());
-                projectNameVsId.put(project.getProjectName(), project.getProjectId());
-            }
+            List<Long> projectIds = projects.stream().map(Project::getProjectId).collect(Collectors.toList());
 
             //attributes
             List<String> availableAttributes = new ArrayList<>();

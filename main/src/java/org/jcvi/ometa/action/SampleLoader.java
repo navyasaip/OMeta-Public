@@ -39,10 +39,7 @@ import javax.transaction.Status;
 import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Properties;
+import java.util.*;
 
 /**
  * Created by IntelliJ IDEA.
@@ -99,8 +96,7 @@ public class SampleLoader extends ActionSupport {
                     loadingSample.setSampleLevel(1);
                 }
 
-                List<Sample> sampleList = new ArrayList<>();
-                sampleList.add(loadingSample);
+                List<Sample> sampleList = Arrays.asList(loadingSample);
 
                 List<SampleMetaAttribute> smaList = readPersister.getSampleMetaAttributes(loadingSample.getProjectId());
                 //create projectMetaAttribute hashmap for quick lookup

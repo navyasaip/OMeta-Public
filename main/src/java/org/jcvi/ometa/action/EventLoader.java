@@ -91,7 +91,6 @@ public class EventLoader extends ActionSupport implements Preparable {
     private String dataTemplateContentType;
 
     private String fileStoragePath;
-    private ArrayList<String> loadedFiles;
 
     private String ids;
     private String sampleArrIndex;
@@ -128,19 +127,8 @@ public class EventLoader extends ActionSupport implements Preparable {
 
     @Override
     public void prepare() throws Exception {
-        //get project list for the drop down box
-        List<String> projectNameList = new ArrayList<>();
-        if (projectNames == null || projectNames.equals("")) {
-            projectNameList.add("ALL");
-        } else if (projectNames.contains(",")) {
-            projectNameList.addAll(Arrays.asList(projectNames.split(",")));
-        } else {
-            projectNameList.add(projectNames);
-        }
-
         String userName = ServletActionContext.getRequest().getRemoteUser();
         projectList = readPersister.getAuthorizedProjects(userName, AccessLevel.View);
-        // projectList = readPersister.getProjects(projectNameList);
     }
 
     /**
@@ -382,15 +370,6 @@ public class EventLoader extends ActionSupport implements Preparable {
                 jobType = SUBMISSION_TYPE_GRID;
             }
         } catch (Exception ex) {
-
-            if(loadedFiles!=null && loadedFiles.size()>0) { //deletes uploaded files in event of error
-                for(String filePath : loadedFiles) {
-                    File tempFile = new File(fileStoragePath + filePath);
-                    if(tempFile.exists())
-                        tempFile.delete();
-                }
-            }
-
             try { //transaction rollback
                 if(tx!=null)
                     tx.rollback();

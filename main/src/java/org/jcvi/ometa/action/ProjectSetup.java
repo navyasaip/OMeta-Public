@@ -41,6 +41,7 @@ import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
 
@@ -106,8 +107,7 @@ public class ProjectSetup extends ActionSupport {
                     loadingProject.setProjectLevel(1);
                 }
 
-                List<Project> projectList = new ArrayList<>();
-                projectList.add(loadingProject);
+                List<Project> projectList = Arrays.asList(loadingProject);
 
                 List<ProjectMetaAttribute> pmaList = null;
                 List<EventMetaAttribute> emaList = null;

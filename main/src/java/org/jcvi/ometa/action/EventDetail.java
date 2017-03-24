@@ -51,7 +51,6 @@ public class EventDetail extends ActionSupport {
 
     private List<Project> projectList;
     private String projectNames;
-    private List<String> projectNameList;
 
     private Long projectId;
     private Long sampleId;
@@ -65,21 +64,10 @@ public class EventDetail extends ActionSupport {
         String returnValue = ERROR;
 
         try {
-
-            projectNameList = new ArrayList<>();
-            if( projectNames == null || projectNames.equals( "" ))
-                projectNameList.add("ALL");
-            else if( projectNames.contains(","))
-                projectNameList.addAll( Arrays.asList(projectNames.split(",")) );
-            else
-                projectNameList.add( projectNames );
-
             String userName = ServletActionContext.getRequest().getRemoteUser();
             projectList = readPersister.getAuthorizedProjects( userName, AccessLevel.View );
-            //projectList = readPersister.getProjects( projectNameList );
 
             returnValue = SUCCESS;
-
         } catch ( ForbiddenResourceException fre ) {
             logger.info( Constants.DENIED_USER_EDIT_MESSAGE );
             addActionError( Constants.DENIED_USER_EDIT_MESSAGE );

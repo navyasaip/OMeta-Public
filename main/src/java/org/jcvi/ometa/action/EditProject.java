@@ -95,13 +95,6 @@ public class EditProject extends ActionSupport{
                 } catch (Exception ex) {
                     ex.printStackTrace();
                     errorMsg = "You do not have permission to access the project, or the project does not exist.";
-                } finally {
-                    try {
-                        if (tx != null && tx.getStatus() != Status.STATUS_NO_TRANSACTION)
-                            tx.commit();
-                    } catch (Exception ex) {
-                        ex.printStackTrace();
-                    }
                 }
             }
         }

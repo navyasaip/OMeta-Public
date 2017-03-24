@@ -65,23 +65,17 @@ public class DPCCValidator {
     }
 
     public static void validateFutureDate(String value) throws Exception {
-        boolean isValid = false;
-
         if(value != null && !value.equals("NA")) {
             Date valueToDate = null;
 
             try {
                 valueToDate = (Date)new SimpleDateFormat(Constants.DATE_ALTERNATIVE_FORMAT).parse(value);
-                isValid = true;
             } catch(ParseException e) {
                 throw new Exception("Invalid value '" + value + "'");
             }
 
-            if(isValid) {
-                if(!valueToDate.after(new Date())) {
-                    throw new Exception("only future date is allowed.");
-                }
-
+            if(!valueToDate.after(new Date())) {
+                throw new Exception("only future date is allowed.");
             }
         }
     }

@@ -61,11 +61,11 @@ public class EventLoadHelper {
         boolean isProjectUpdate = eventName.contains(Constants.EVENT_PROJECT_UPDATE) || eventName.contains(Constants.EVENT_CORE_PROJECT_UPDATE);
         boolean isSampleRegistration = eventName.contains(Constants.EVENT_SAMPLE_REGISTRATION) || eventName.contains(Constants.EVENT_CORE_SAMPLE_REGISTRATION);
 
-        // check if the user has data support role
-        boolean isUserDataSupporter = false;
         // set containing role names
 
         /* Not necessary for internal OMETA
+        // check if the user has data support role
+        boolean isUserDataSupporter = false;
         String[] dataRoleArr = this.dataRole.split(",");
         Set<String> dataRoleSet = new HashSet<String>(Arrays.asList(dataRoleArr));
         // check if current user has proper role to update status after data is submitted to DPCC
@@ -125,7 +125,7 @@ public class EventLoadHelper {
                 List<FileReadAttributeBean> fBeanList = gBean.getBeanList();
                 // process empty attribute lists events for project/sample registrations
                 if((fBeanList != null && fBeanList.size() > 0) || isProjectRegistration || isSampleRegistration) {
-                    this.createMultiLoadParameter(loadParameter, projectName, eventName, loadingProject,  loadingSample, fBeanList, status, ++gridRowIndex, isUserDataSupporter);
+                    this.createMultiLoadParameter(loadParameter, projectName, eventName, loadingProject,  loadingSample, fBeanList, status, ++gridRowIndex, false);
                 }
             }
         }

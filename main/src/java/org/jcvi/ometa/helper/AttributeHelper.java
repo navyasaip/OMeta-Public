@@ -97,11 +97,11 @@ public class AttributeHelper {
                             attributeModelBean = eaMap.get(emaLookupValueId);
                         } else {
                             if(isProject) {
-                                if(paMap != null && paMap.containsKey(emaLookupValueId)) {
+                                if(paMap.containsKey(emaLookupValueId)) {
                                     attributeModelBean = paMap.get(emaLookupValueId);
                                 }
                             } else {
-                                if(saMap != null && saMap.containsKey(emaLookupValueId)) { //get sample attribute value if event attribute has no record
+                                if(saMap.containsKey(emaLookupValueId)) { //get sample attribute value if event attribute has no record
                                     attributeModelBean = saMap.get(emaLookupValueId);
                                 }
                             }

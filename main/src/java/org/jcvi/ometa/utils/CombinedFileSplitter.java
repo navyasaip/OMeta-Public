@@ -93,9 +93,7 @@ public class CombinedFileSplitter {
                 }
                 else {
                     // Process the current line.
-                    if (writer != null) {
-                        writer.println(inbuf);
-                    }
+                    writer.println(inbuf);
                 }
             }
         }
@@ -113,18 +111,19 @@ public class CombinedFileSplitter {
             }
             else {
                 File[] sublist = directory.listFiles();
-                for (File file: sublist) {
-                    if (file.isFile()) {
-                        if (! file.delete())
-                            System.err.println("Failed to delete file " + file);
-                    }
-                    else if (file.isDirectory()) {
-                        removeDirectory(file);
+                if(sublist != null) {
+                    for (File file : sublist) {
+                        if (file.isFile()) {
+                            if (!file.delete())
+                                System.err.println("Failed to delete file " + file);
+                        } else if (file.isDirectory()) {
+                            removeDirectory(file);
+                        }
                     }
                 }
             }
         }
-        if (! directory.delete()) {
+        if (directory != null && !directory.delete()) {
             System.err.println("Failed to delete directory " + directory);
         }
 

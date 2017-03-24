@@ -76,12 +76,8 @@ public class EventMetaAttributeDAO extends HibernateDAO {
             crit.add( Restrictions.eq("eventTypeLookupId", eventTypeLookupId) );
 
             List results = crit.list();
-            Date latestDate = null;
             for ( Object nextResult: results ) {
-                EventMetaAttribute nextMetaAttribute = (EventMetaAttribute)nextResult;
-                if ( latestDate == null  ||  nextMetaAttribute.getCreationDate().after( latestDate ) ) {
-                    metaAttribute = nextMetaAttribute;
-                }
+                metaAttribute = (EventMetaAttribute)nextResult;
             }
 
         } catch ( Exception ex ) {

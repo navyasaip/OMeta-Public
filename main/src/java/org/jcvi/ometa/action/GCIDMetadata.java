@@ -428,7 +428,7 @@ public class GCIDMetadata extends ActionSupport {
             lea.add(ea);
         }
         if (eventIdVsAttributes.size() == 0) {
-            logger.debug("Returning empty results from getEventIdVsAttributeList for input list of size " + allEventIds.size());
+            logger.debug("Returning empty results from getEventIdVsAttributeList for input list of size " + (allEventIds != null ? allEventIds.size() : 0));
         }
         return eventIdVsAttributes;
     }

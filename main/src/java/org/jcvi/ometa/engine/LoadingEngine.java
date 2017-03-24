@@ -237,7 +237,7 @@ public class LoadingEngine {
             success = 0;
             throw ex;
         } finally {
-            if (scratchLoc != null  &&  scratchLoc.exists()) {
+            if (scratchLoc.exists()) {
                 // The scratch directory may be within a numeric "unique id" directory.  That should
                 // go away, too.
                 File cleanupDir = scratchLoc;

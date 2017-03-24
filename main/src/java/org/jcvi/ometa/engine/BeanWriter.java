@@ -227,7 +227,7 @@ public class BeanWriter {
                 writer.append(sample.getSampleName());
                 writer.append(',');
 
-                if (sampleAttributes != null && sampleAttributes.size() > 0) {
+                if (sampleAttributes.size() > 0) {
                     for (SampleAttribute sa : sampleAttributes) {
                         if (sa.getMetaAttribute() == null)
                             continue;

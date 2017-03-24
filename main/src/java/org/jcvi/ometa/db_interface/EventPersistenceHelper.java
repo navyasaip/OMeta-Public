@@ -35,6 +35,7 @@ import java.io.File;
 import java.lang.reflect.Method;
 import java.text.MessageFormat;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Created by IntelliJ IDEA.
@@ -377,16 +378,9 @@ public class EventPersistenceHelper {
                                 dictList = readPersister.getDictionaryByType(dictType);
                             }
 
-                            StringBuilder sb = new StringBuilder();
-                            String delim = "";
-
-                            for (Dictionary dictionary : dictList) {
-                                sb.append(delim).append(dictionary.getDictionaryCode());
-
-                                delim = ";";
-                            }
-
-                            controlValues = sb.toString();
+                            controlValues = Optional.ofNullable(dictList).orElseGet(Collections::emptyList).stream().filter(Objects::nonNull)
+                                    .map(Dictionary::getDictionaryCode)
+                                    .collect(Collectors.joining(";"));
                         } catch (Exception ex) {
                             ex.printStackTrace();
                         }

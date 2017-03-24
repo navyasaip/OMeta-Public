@@ -156,8 +156,8 @@ public class EventsToFile {
             throw new Exception("Usage: <JSON file path> <output(TSV) path> <server>");
         }
 
-        String userName = null;
-        String password = null;
+        String userName;
+        String password;
         Console console = System.console();
         if ( console == null ) {
             throw new Exception( "No console available.\n" );
@@ -168,7 +168,7 @@ public class EventsToFile {
             password = new String(passwordArr);
         }
 
-        if(userName!=null && userName.length()>0 && password!=null && password.length()>0) {
+        if(userName != null && userName.length() > 0 && password.length() > 0) {
             EventsToFile etf = new EventsToFile();
             Params params = etf.parseJson(args[0]);
             etf.execute(userName, password, params, args[1], args[2]);

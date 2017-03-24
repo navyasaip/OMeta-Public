@@ -150,7 +150,7 @@ public class BeanPopulator {
             putativeDataName = headerMapping.value();
 
             // No overridden column name.  Make assumption.
-            if(putativeDataName == null  ||  putativeDataName.trim().length() == 0) {
+            if(putativeDataName.trim().length() == 0) {
                 // Take the mixed-case name of the thing and use it.
                 putativeDataName = method.getName().substring(SET_PREFIX.length());
                 putativeDataName = putativeDataName.substring(0, 1).toUpperCase() + putativeDataName.substring(1);

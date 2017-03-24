@@ -257,7 +257,7 @@ public class CommonTool {
                                                 .filter(ema_ -> ema_.getLookupValue().getName().equals(dictOpts[1]))
                                                 .findFirst()
                                                 .map(ema_ -> ema_.getOptions().replace("Dictionary:", ""))
-                                                .orElse(parentDictType);
+                                                .orElse(null);
                                     }
 
                                     if (parentDictType != null) {

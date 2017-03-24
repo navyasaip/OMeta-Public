@@ -61,12 +61,8 @@ public abstract class HibernateDAO {
             crit.add(Restrictions.eq("nameLookupId", lookupValueId));
             crit.add(Restrictions.eq("projectId", projectId));
             List results = crit.list();
-            Date latestDate = null;
             for (Object nextResult : results) {
-                T nextMetaAttribute = (T) nextResult;
-                if (latestDate == null || nextMetaAttribute.getCreationDate().after(latestDate)) {
-                    metaAttribute = nextMetaAttribute;
-                }
+                metaAttribute = (T) nextResult;
             }
 
         } catch (Exception ex) {

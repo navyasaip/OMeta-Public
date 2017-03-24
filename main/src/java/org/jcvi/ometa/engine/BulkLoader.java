@@ -169,7 +169,7 @@ public class BulkLoader {
                                                     File[] filesInZip = zipDirectory.listFiles(file -> FilenameUtils.isExtension(file.getName(), "csv"));
 
                                                     // missing or multiple csv data file error
-                                                    if(filesInZip.length == 0) {
+                                                    if(filesInZip == null || filesInZip.length == 0) {
                                                         throw new Exception(ErrorMessages.BULK_CSV_FILE_MISSING);
                                                     } else if(filesInZip.length > 1) {
                                                         throw new Exception(ErrorMessages.BULK_MULTIPLE_CSV_FILE);

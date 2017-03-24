@@ -286,17 +286,15 @@ public class SharedAjax extends ActionSupport implements IAjaxAction {
                 sampleAttributes = readPersister.getSampleAttributes(sample.getSampleId());
 
                 Map<String, Object> attributeMap = new HashMap<>(sampleAttributes.size());
-                if(sampleAttributes != null) {
-                    for (SampleAttribute sa : sampleAttributes) {
-                        SampleMetaAttribute sma = sa.getMetaAttribute();
-                        if (!sma.isActive()) { //skip inactive attribute
-                            continue;
-                        }
-                        LookupValue tempLookupValue = sma.getLookupValue();
-                        Object attrValue = ModelValidator.getModelValue(tempLookupValue, sa);
-                        if (tempLookupValue != null && tempLookupValue.getName() != null) {
-                            attributeMap.put(tempLookupValue.getName(), attrValue);
-                        }
+                for (SampleAttribute sa : sampleAttributes) {
+                    SampleMetaAttribute sma = sa.getMetaAttribute();
+                    if (!sma.isActive()) { //skip inactive attribute
+                        continue;
+                    }
+                    LookupValue tempLookupValue = sma.getLookupValue();
+                    Object attrValue = ModelValidator.getModelValue(tempLookupValue, sa);
+                    if (tempLookupValue != null && tempLookupValue.getName() != null) {
+                        attributeMap.put(tempLookupValue.getName(), attrValue);
                     }
                 }
 
